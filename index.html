@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تمكين - مركز تمكين لذوي متلازمة داون</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cairo", Arial, sans-serif;
+        background-color: #f5f5f5;
+        line-height: 1.6;
+        color: #333;
+        direction: rtl;
+      } /* Header */
+
+      .header {
+        background-color: #fffefc;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-image {
+        height: 90px; /* ارتفاع اللوجو */
+        width: auto; /* العرض تلقائي للحفاظ على النسبة */
+        max-width: 200px; /* أقصى عرض */
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-link {
+        padding: 12px 20px;
+        text-decoration: none;
+        color: #333;
+        font-size: 22px;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .nav-link:hover {
+        background-color: #f0f0f0;
+      }
+
+      .nav-link.active {
+        color: #00a17a;
+        font-weight: 600;
+      }
+
+      .login-btn {
+        background-color: #253676;
+        color: white !important;
+        padding: 12px 24px;
+        border-radius: 18px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .login-btn:hover {
+        background-color: #1d2a5f;
+        transform: translateY(-2px);
+      } /* Main Content */
+
+      .main-content {
+        max-width: 1440px;
+        margin: 0 auto;
+        background: white;
+        min-height: calc(100vh - 140px);
+      }
+
+      .page {
+        display: none;
+        padding: 40px;
+      }
+
+      .page.active {
+        display: block;
+      } /* About Page */
+
+      .hero-section {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        margin-bottom: 60px;
+        padding: 40px 0;
+      }
+
+      .hero-image {
+        position: relative;
+        flex: 1;
+      }
+
+      .hero-bg {
+        width: 400px;
+        height: 400px;
+        background-color: #253676;
+        border-radius: 200px 200px 0 0;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .child-image {
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        width: 410px;
+        height: 410px;
+        background: url("https://i.ibb.co/gM0z9RS1/3b7616aa1cffc6fffb0ef4f3bd5ecb995fc309b2.png")
+          center/cover;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-content {
+        flex: 1;
+        padding-right: 40px;
+      }
+
+      .hero-title {
+        font-size: 48px;
+        color: #00a17a;
+        margin-bottom: 30px;
+        line-height: 1.3;
+      }
+
+      .hero-description {
+        font-size: 24px;
+        color: #253676;
+        margin-bottom: 40px;
+        line-height: 1.8;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .btn {
+        padding: 15px 24px;
+        border: none;
+        border-radius: 25px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background-color: #253676;
+        color: white;
+      }
+
+      .btn-secondary {
+        background-color: #eebc23;
+        color: white;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      } /* Vision & Mission Cards */
+
+      .cards-section {
+        display: flex;
+        gap: 40px;
+        margin: 60px 0;
+      }
+
+      .card {
+        flex: 1;
+        background: white;
+        border: 3px solid #004266;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: right;
+      }
+
+      .card h3 {
+        font-size: 28px;
+        color: #00a17a;
+        margin-bottom: 20px;
+      }
+
+      .card p {
+        font-size: 20px;
+        line-height: 1.8;
+        color: #333;
+      } /* Goals Section */
+
+      .goals-section {
+        background-color: #253676;
+        padding: 60px 40px;
+        border-radius: 20px;
+        margin: 60px 0;
+        direction: rtl;
+      }
+
+      .goals-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        flex-direction: row-reverse; /* الصورة على اليمين */
+        /* flex-wrap: wrap; */
+      }
+
+      .goals-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .goals-section h2 {
+        color: #eebc23;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      .goals-section ul {
+        list-style-type: square;
+        color: #fff;
+        padding-right: 30px;
+        font-size: 22px;
+        line-height: 1.8;
+      }
+
+      .goals-section li {
+        color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .goals-image {
+        /* flex: 0 0 320px; */
+        text-align: center;
+      }
+
+      .goals-image img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 20px;
+        object-fit: cover;
+      }
+
+      /* ✅ تصميم الجوال */
+      @media (max-width: 786px) {
+        .goals-content {
+          flex-direction: column; /* الصورة فوق النص */
+          text-align: center;
+        }
+
+        .goals-image {
+          order: -1; /* الصورة تطلع فوق */
+          /* margin-bottom: 30px; */
+        }
+
+        .goals-text {
+          text-align: right; /* النص يبقى يمين */
+        }
+
+        .goals-section h2 {
+          text-align: center;
+        }
+
+        .goals-section ul {
+          padding-right: 20px;
+          font-size: 20px;
+        }
+      }
+      /* Services Page */
+
+      .services-banner {
+        background-color: #253676;
+        padding: 50px 30px;
+        border-radius: 20px;
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+        text-align: right;
+      }
+
+      .banner-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        direction: rtl; /* مهم لأن الصفحة عربية */
+      }
+
+      .banner-logo {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .banner-logo img {
+        height: 120px;
+        width: auto;
+      }
+      .divider {
+        width: 3px;
+        height: 130px;
+        background-color: white;
+      }
+
+      .services-banner h2 {
+        color: white;
+        font-size: 29px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .banner-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .banner-logo {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .divider {
+          width: 230%;
+          height: 2px;
+        }
+
+        .banner-text {
+          text-align: center;
+        }
+
+        .banner-text h2 {
+          font-size: 22px;
+        }
+
+        .banner-logo img {
+          height: 85px;
+        }
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin: 60px 0;
+      }
+
+      .service-card {
+        border: 3px solid #253676;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        background: white;
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-card h3 {
+        font-size: 24px;
+        color: #0e0000;
+        margin-bottom: 30px;
+      }
+
+      .service-card .btn {
+        font-size: 16px;
+        padding: 12px 25px;
+      } /* Join Us Pages */
+
+      .join-section {
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .portal-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0 60px 0;
+      }
+
+      .portal-btn {
+        padding: 20px 100px;
+        font-size: 24px;
+        font-weight: 600;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .portal-btn.employment {
+        background-color: #253676;
+        color: white;
+      }
+
+      .portal-btn.students {
+        background-color: #00a17a;
+        color: white;
+      }
+
+      .portal-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-description {
+        font-size: 20px;
+        color: #00a17a;
+        margin: 40px 0;
+        line-height: 1.8;
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+        text-align: right;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 18px;
+        color: #253676;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 15px;
+        border: 3px solid #253676;
+        border-radius: 20px;
+        font-size: 16px;
+        direction: rtl;
+      }
+
+      .file-upload {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .file-upload input[type="file"] {
+        position: absolute;
+        left: -9999px;
+      }
+
+      .file-upload-btn {
+        background-color: #f0f0f0;
+        border: 3px solid #253676;
+        border-radius: 20px;
+        padding: 15px;
+        width: 100%;
+        text-align: right;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .file-name {
+        color: #666;
+      }
+
+      .submit-btn {
+        background-color: #00a17a;
+        color: white;
+        padding: 15px 60px;
+        border: none;
+        border-radius: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #008f6a;
+        transform: translateY(-2px);
+      } /* Footer */
+
+      .footer {
+        background-color: #f5f5f5;
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid #ddd;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icons a {
+        color: #253676;
+        font-size: 24px;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: #00a17a;
+        transform: translateY(-3px);
+      } /* Responsive Design */
+
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 10px;
+        }
+
+        .nav-links {
+          /* flex-direction: column; */
+          gap: 20px;
+        }
+        .nav-link {
+          display: block;
+          font-size: 17px;
+          color: #333;
+          padding: 10px 0;
+        }
+        /* عند التمرير للأسفل */
+        .header.hide {
+          transform: translateY(-100%);
+          transition: transform 0.4s ease;
+        }
+
+        /* عند العودة للأعلى */
+        .header {
+          transition: transform 0.4s ease;
+        }
+
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content {
+          padding-right: 0;
+        }
+
+        .hero-title {
+          font-size: 36px;
+        }
+
+        .cards-section {
+          flex-direction: column;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .portal-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .page {
+          padding: 20px;
+        }
+
+        .form-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">
+          <img
+            src="https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png"
+            alt="تمكين لوجو"
+            class="logo-image"
+          />
+        </div>
+        <nav class="nav-menu">
+          <div class="nav-links">
+            <a href="#" class="nav-link active" onclick="showPage('about')"
+              >من نحن</a
+            >
+            <a href="#" class="nav-link" onclick="showPage('services')"
+              >خدماتنا</a
+            >
+            <a href="#" class="nav-link" onclick="showPage('join')"
+              >إنضم إلينا</a
+            >
+          </div>
+          <!-- <a href="#" class="login-btn">تسجيل الدخول</a> -->
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- About Page -->
+      <div id="about" class="page active">
+        <div class="hero-section">
+          <div class="hero-image">
+            <div class="hero-bg">
+              <div class="child-image"></div>
+            </div>
+          </div>
+          <div class="hero-content">
+            <h1 class="hero-title">نرحب بكم في مركز تمكين لذوي متلازمة داون</h1>
+            <p class="hero-description">
+              المركز الأول بشمال المملكة لذوي متلازمة داون نطمح في مستقبل يعيش
+              فيه أفراد متلازمة الداون مستقلين ومنتجين ومقدرين في المجتمع
+            </p>
+            <div class="hero-buttons">
+              <a href="#" class="btn btn-primary" onclick="showPage('services')"
+                >خدماتنا</a
+              >
+              <a href="#" class="btn btn-secondary" onclick="showPage('join')"
+                >إنضم إلينا</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="services-banner">
+          <div class="banner-content">
+            <!-- الجزء الأيمن: اللوجو -->
+            <div class="banner-logo">
+              <img
+                src="https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png"
+                alt="تمكين لوجو"
+              />
+              <div class="divider"></div>
+            </div>
+
+            <!-- الجزء الأيسر: النص والزر -->
+            <div class="banner-text">
+              <h2>أحدث برامج مركز تمكين لذوي متلازمة داون</h2>
+              <a
+                href="#"
+                class="btn btn-secondary"
+                onclick="showPage('services')"
+              >
+                إقرأ المزيد
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-section">
+          <div class="card">
+            <h3>رؤيتنا:</h3>
+            <p>
+              نطمح في مستقبل يعيش فيه الأفراد من ذوي متلازمة داون مستقلين منتجين
+              ومقدرين في المجتمع
+            </p>
+          </div>
+          <div class="card">
+            <h3>رسالتنا:</h3>
+            <p>
+              رعاية وتأهيل ذوي متلازمة داون في منطقة حائل للوصول بهم إلى أقصى ما
+              تستطيع قدراتهم من خلال التعليم ذي المستوى العالي والتدريب والتوعية
+            </p>
+          </div>
+        </div>
+
+        <div class="goals-section">
+          <div class="goals-content">
+            <div class="goals-text">
+              <h2>أهدافنا:</h2>
+              <ul>
+                <li>
+                  تمكين أطفال متلازمة داون من الاعتماد على أنفسهم بمختلف مجالات
+                  الحياة.
+                </li>
+                <li>
+                  تمكين أطفال متلازمة داون من الحصول على التعليم المناسب لهم.
+                </li>
+                <li>تمكين أطفال متلازمة داون على الاندماج بالمجتمع.</li>
+                <li>
+                  تمكين المجتمع وتوسيع مداركهم على قدرة أطفال متلازمة داون من
+                  التعليم وتطوير مهاراتهم وإمكانياتهم والعيش حياة كريمة.
+                </li>
+              </ul>
+            </div>
+
+            <div class="goals-image">
+              <img
+                src="https://i.ibb.co/gM0z9RS1/3b7616aa1cffc6fffb0ef4f3bd5ecb995fc309b2.png"
+                alt="أطفال متلازمة داون"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Page -->
+      <div id="services" class="page">
+        <div class="services-banner">
+          <div class="banner-content">
+            <!-- الجزء الأيمن: اللوجو -->
+            <div class="banner-logo">
+              <img
+                src="https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png"
+                alt="تمكين لوجو"
+              />
+              <div class="divider"></div>
+            </div>
+
+            <!-- الجزء الأيسر: النص والزر -->
+            <div class="banner-text">
+              <h2>أحدث برامج مركز تمكين لذوي متلازمة داون</h2>
+              <a
+                href="#"
+                class="btn btn-secondary"
+                onclick="showPage('services')"
+              >
+                إقرأ المزيد
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>التعليم الأكاديمي</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>برامج اجتماعية</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>تعديل السلوك</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>العلاج الطبيعي</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>علاج النطق والتخاطب</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>العلاج الوظيفي</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>رحلات ترفيهية</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>التأهيل النفسي</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+          <div class="service-card">
+            <h3>تأهيل مهني</h3>
+            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join Us Page -->
+      <div id="join" class="page">
+        <div class="join-section">
+          <div class="portal-buttons">
+            <button
+              class="portal-btn employment"
+              onclick="showEmploymentForm()"
+            >
+              بوابة التوظيف
+            </button>
+            <button class="portal-btn students" onclick="showStudentForm()">
+              بوابة إنضمام الطلاب
+            </button>
+          </div>
+
+          <!-- Student Enrollment Form -->
+          <div id="student-form" class="form-container">
+            <!-- <p class="form-description">ساهم في بناء مستقبل واعد لأطفال تمكين، وكن جزءاً من مسيرتنا واستكشف الفرص الوظيفية المتاحة عبر موقعنا</p> -->
+
+            <form>
+              <div class="form-group">
+                <label>إسم ولي الأمر</label>
+                <input type="text" required />
+              </div>
+              <div class="form-group">
+                <label>صلة القرابة</label>
+                <input type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label>رقم الجوال</label>
+                <input type="number" required />
+              </div>
+
+              <div class="form-group">
+                <label>نوع الإعاقة</label>
+                <input type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" required />
+              </div>
+
+              <div class="form-group">
+                <label>الجنسية</label>
+                <input type="text" required />
+              </div>
+
+              <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+          </div>
+
+          <!-- Employment Form -->
+          <div
+            id="employment-form"
+            class="form-container"
+            style="display: none"
+          >
+            <p class="form-description">
+              ساهم في بناء مستقبل واعد لأطفال تمكين، وكن جزءاً من مسيرتنا
+              واستكشف الفرص الوظيفية المتاحة عبر موقعنا
+            </p>
+
+            <form>
+              <div class="form-group">
+                <label>الإسم</label>
+                <input type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" required />
+              </div>
+
+              <div class="form-group">
+                <label>السيرة الذاتية</label>
+                <div class="file-upload">
+                  <input
+                    type="file"
+                    id="cv-upload-emp"
+                    accept=".pdf,.doc,.docx"
+                  />
+                  <div
+                    class="file-upload-btn"
+                    onclick="document.getElementById('cv-upload-emp').click()"
+                  >
+                    <span class="file-name">لم يتم تحديد أي ملف</span>
+                    <span>اختيار الملف</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="social-icons">
+        <a href="#">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-snapchat"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => page.classList.remove("active"));
+
+        // Show selected page
+        document.getElementById(pageId).classList.add("active");
+
+        // Update active nav link
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => link.classList.remove("active"));
+
+        // Set active link based on page
+        if (pageId === "about") {
+          document
+            .querySelector('.nav-link[onclick*="about"]')
+            .classList.add("active");
+        } else if (pageId === "services") {
+          document
+            .querySelector('.nav-link[onclick*="services"]')
+            .classList.add("active");
+        } else if (pageId === "join") {
+          document
+            .querySelector('.nav-link[onclick*="join"]')
+            .classList.add("active");
+        }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // إخفاء الهيدر عند التمرير للأسفل وإظهاره عند العودة للأعلى
+      let lastScrollTop = 0;
+      const header = document.querySelector(".header");
+
+      window.addEventListener("scroll", function () {
+        const currentScroll =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScrollTop && currentScroll > 80) {
+          // المستخدم ينزل للأسفل → أخفِ الهيدر
+          header.classList.add("hide");
+        } else {
+          // المستخدم يطلع للأعلى → أظهر الهيدر
+          header.classList.remove("hide");
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // تحديث آخر موضع
+      });
+
+      function showStudentForm() {
+        const studentForm = document.getElementById("student-form");
+        const employmentForm = document.getElementById("employment-form");
+        const studentBtn = document.querySelector(".portal-btn.students");
+        const employmentBtn = document.querySelector(".portal-btn.employment");
+
+        studentForm.style.display = "block";
+        employmentForm.style.display = "none";
+
+        studentBtn.style.backgroundColor = "#00A17A";
+        employmentBtn.style.backgroundColor = "#253676";
+      }
+
+      function showEmploymentForm() {
+        const studentForm = document.getElementById("student-form");
+        const employmentForm = document.getElementById("employment-form");
+        const studentBtn = document.querySelector(".portal-btn.students");
+        const employmentBtn = document.querySelector(".portal-btn.employment");
+
+        studentForm.style.display = "none";
+        employmentForm.style.display = "block";
+
+        studentBtn.style.backgroundColor = "#253676";
+        employmentBtn.style.backgroundColor = "#00A17A";
+      }
+
+      // File upload handling
+      document
+        .getElementById("cv-upload")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]
+            ? e.target.files[0].name
+            : "لم يتم تحديد أي ملف";
+          e.target.parentElement.querySelector(".file-name").textContent =
+            fileName;
+        });
+
+      document
+        .getElementById("cv-upload-emp")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]
+            ? e.target.files[0].name
+            : "لم يتم تحديد أي ملف";
+          e.target.parentElement.querySelector(".file-name").textContent =
+            fileName;
+        });
+
+      // Form submission
+      document.querySelectorAll("form").forEach((form) => {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("تم إرسال الطلب بنجاح!");
+        });
+      });
+    </script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"972419d3fe2dedb7","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+<script id="html_badge_script1">
+  window.__genspark_remove_badge_link =
+    "https://www.genspark.ai/api/html_badge/" +
+    "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDptif7jZj3nlFW8P8KzNWHKHql4aAmqkSn%2FXxFB77Vg7IK0lV2sFCuTKgdvgvx%2BPVE2hn3a8KMBTWiRHUQC60huvExprgSw094l68EYe78Gy01hTnlxcf7qMTSuJ5037PM3YwoNy0dJ01vBIjdTOB1HJZnTKfS4AcsxPkdkD9l7MwcrlUHhczG%2B%2FER%2BUluJ%2F7cCsqt8bIT7dw9hLoF5SZWAzoi99KGxm%2BmOpVitzIKtfmSiA24JnIIhKP8skWYyR3ZXiVNilRFZwW0rsxjWk0v7e3mF67RE5iQjcjfEZfRdwX2A9L5VtbGhZXh7dXtt%2BoSz0mFiugEaU0YFnS8cyggbmqBBZAFRt6rA%2F1MKWyFOnH8OJ0kgvwhyDe6boS3vmrgXfmNHBoV3NjHk2Iyd5O0LGbkEnHupQiqbdb8vuiKyNOXgEI%2FPwbZctsLQKcc0JTspcTojNk17SOr7ji%2FWMBW3uUwoL1tFHpsadHKhgPNyIq%2BggG8%2B8PCJpWrkHJZCGA6Fz8zzH6Fjj3UfudzLPcME%3D";
+  window.__genspark_locale = "en-US";
+  window.__genspark_token =
+    "To/BnjzloZ3UfQdcSaYfDptif7jZj3nlFW8P8KzNWHKHql4aAmqkSn/XxFB77Vg7IK0lV2sFCuTKgdvgvx+PVE2hn3a8KMBTWiRHUQC60huvExprgSw094l68EYe78Gy01hTnlxcf7qMTSuJ5037PM3YwoNy0dJ01vBIjdTOB1HJZnTKfS4AcsxPkdkD9l7MwcrlUHhczG+/ER+UluJ/7cCsqt8bIT7dw9hLoF5SZWAzoi99KGxm+mOpVitzIKtfmSiA24JnIIhKP8skWYyR3ZXiVNilRFZwW0rsxjWk0v7e3mF67RE5iQjcjfEZfRdwX2A9L5VtbGhZXh7dXtt+oSz0mFiugEaU0YFnS8cyggbmqBBZAFRt6rA/1MKWyFOnH8OJ0kgvwhyDe6boS3vmrgXfmNHBoV3NjHk2Iyd5O0LGbkEnHupQiqbdb8vuiKyNOXgEI/PwbZctsLQKcc0JTspcTojNk17SOr7ji/WMBW3uUwoL1tFHpsadHKhgPNyIq+ggG8+8PCJpWrkHJZCGA6Fz8zzH6Fjj3UfudzLPcME=";
+</script>
+
+<script
+  id="html_notice_dialog_script"
+  src="https://www.genspark.ai/notice_dialog.js"
+></script>
