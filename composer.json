@@ -1,0 +1,8 @@
+{
+  "name": "tamken/company-profile",
+  "description": "Company profile forms with PHPMailer for SMTP emails",
+  "require": {
+    "php": ">=8.1",
+    "phpmailer/phpmailer": "^7.0"
+  }
+}

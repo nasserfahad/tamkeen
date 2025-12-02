@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{subject}}</title>
+    <style>
+      body {
+        font-family: Tahoma, Arial, sans-serif;
+        background: #f9fafb;
+        color: #222;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      }
+      /* .header { background: {{brand_color}}; color: #fff; padding: 20px; text-align: center; } */
+      .header img {
+        max-height: 48px;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      .content {
+        padding: 24px;
+        line-height: 1.8;
+      }
+      .details {
+        background: #f3f4f6;
+        border-radius: 10px;
+        padding: 16px;
+        margin-top: 12px;
+      }
+      .footer {
+        padding: 16px;
+        text-align: center;
+        font-size: 13px;
+        color: #666;
+        border-top: 1px solid #eee;
+      }
+      code {
+        background: #eef2ff;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="{{brand_logo_url}}" alt="{{brand_name}}" />
+        <div>{{brand_name}} &mdash; إشعار طلب جديد</div>
+      </div>
+      <div class="content">
+        <h2 style="margin-top: 0">{{subject}}</h2>
+        <p>{{intro}}</p>
+        <div class="details">{{details}}</div>
+        <!-- Example DB insert (commented)
+        INSERT INTO student_applications (father_name, relationship, phone_number, type_disability, email, nationality, created_at)
+        VALUES (:father_name, :relationship, :phone_number, :type_disability, :email, :nationality, NOW());
+
+        INSERT INTO employment_applications (full_name, email, cv_path, created_at)
+        VALUES (:full_name, :email, :cv_path, NOW());
+        -->
+      </div>
+      <div class="footer">&copy; {{year}} {{brand_name}}.</div>
+    </div>
+  </body>
+</html>

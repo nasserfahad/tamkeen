@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{subject}}</title>
+    <style>
+      body {
+        font-family: Tahoma, Arial, sans-serif;
+        background: #f9fafb;
+        color: #222;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+      .container {
+        max-width: 640px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      }
+      /* .header { background: {{brand_color}}; color: #fff; padding: 20px; text-align: center; } */
+      .header img {
+        max-height: 48px;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      .content {
+        padding: 24px;
+        line-height: 1.8;
+      }
+
+      /* =============== in the future you can add details of the application here ================== */
+      /* .details { background:#f3f4f6; border-radius:10px; padding:16px; margin-top:12px; } */
+      .footer {
+        padding: 16px;
+        text-align: center;
+        font-size: 13px;
+        color: #666;
+        border-top: 1px solid #eee;
+      }
+      /* a { color: {{brand_color}}; } */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- Edit your logo URL and brand color in PHP replacements -->
+        <img src="{{brand_logo_url}}" alt="{{brand_name}}" />
+        <div>{{brand_name}}</div>
+      </div>
+      <div class="content">
+        <h2 style="margin-top: 0">{{subject}}</h2>
+        <p>{{intro}}</p>
+        <!-- =============== here the connection for the details ==================  -->
+        <!-- <div class="details">{{details}}</div> -->
+      </div>
+      <div class="footer">
+        {{footer_note}}<br />
+        &copy; {{year}} {{brand_name}}. جميع الحقوق محفوظة.
+      </div>
+    </div>
+  </body>
+</html>
