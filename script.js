@@ -108,18 +108,56 @@
         return ok;
     }
 
+    function setButtonLoading(btn, isLoading) {
+        if (!btn) return;
+        if (isLoading) {
+            btn.disabled = true;
+            btn.classList.add('is-loading');
+        } else {
+            btn.disabled = false;
+            btn.classList.remove('is-loading');
+        }
+    }
+
+    function ensureToastContainer() {
+        let el = document.getElementById('toast-container');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'toast-container';
+            el.className = 'toast-container';
+            el.setAttribute('aria-live', 'polite');
+            document.body.appendChild(el);
+        }
+        return el;
+    }
+
+    function showToast(message, type) {
+        const container = ensureToastContainer();
+        const toast = document.createElement('div');
+        toast.className = `toast toast--${type || 'info'}`;
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('show'));
+
+        const hide = () => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 250);
+        };
+
+        setTimeout(hide, 3600);
+        toast.addEventListener('click', hide);
+    }
+
     // ───────────────────────
     // Submit form
     // ───────────────────────
     async function submitForm(form, endpoint) {
-        const status = form.querySelector('.form-status');
         const btn = form.querySelector('button[type="submit"]');
 
-        if (status) {
-            status.textContent = 'جاري الإرسال...';
-            status.style.color = '#0a7f6f';
-        }
-        if (btn) btn.disabled = true;
+        const status = form.querySelector('.form-status');
+        if (status) status.textContent = '';
+        setButtonLoading(btn, true);
 
         try {
             const fd = new FormData(form);
@@ -128,16 +166,46 @@
 
             if (!res.ok || !json.success) throw new Error(json.message || `فشل الإرسال`);
 
-            if (status) status.textContent = json.message || 'تم الإرسال بنجاح.';
+            showToast(json.message || 'تم الإرسال بنجاح.', 'success');
             form.reset();
         } catch (err) {
-            if (status) {
-                status.textContent = err.message || 'تعذر إرسال الطلب.';
-                status.style.color = '#d62828';
-            }
+            showToast(err.message || 'تعذر إرسال الطلب.', 'error');
         } finally {
-            if (btn) btn.disabled = false;
+            setButtonLoading(btn, false);
         }
+    }
+
+    // ───────────────────────
+    // Mobile Menu (NEW)
+    // ───────────────────────
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('mainNav');
+
+    window.closeMobileMenu = function () {
+        if (!nav) return;
+        nav.classList.remove('is-open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    function toggleMobileMenu() {
+        if (!nav) return;
+        const isOpen = nav.classList.toggle('is-open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    if (toggleBtn && nav) {
+        toggleBtn.addEventListener('click', toggleMobileMenu);
+
+        // إغلاق عند الضغط خارج القائمة
+        document.addEventListener('click', (e) => {
+            const inside = nav.contains(e.target) || toggleBtn.contains(e.target);
+            if (!inside) window.closeMobileMenu();
+        });
+
+        // إغلاق عند الرجوع لشاشة كبيرة
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) window.closeMobileMenu();
+        });
     }
 
     // ───────────────────────
@@ -145,25 +213,56 @@
     // ───────────────────────
     window.showPage = function (pageId) {
         document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
-        document.getElementById(pageId).classList.add("active");
+        const target = document.getElementById(pageId);
+        if (target) target.classList.add("active");
 
         document.querySelectorAll(".nav-link").forEach((l) => l.classList.remove("active"));
 
         const match = document.querySelector(`.nav-link[onclick*="${pageId}"]`);
         if (match) match.classList.add("active");
 
+        // NEW: اقفل القائمة بعد اختيار صفحة على الجوال
+        if (window.innerWidth <= 768) window.closeMobileMenu();
+
         window.scrollTo(0, 0);
     };
 
-    // Hide/Show header on scroll
-    let lastScrollTop = 0;
+    // Hide/Show header on scroll (Mobile only)
+    let lastScrollY = window.pageYOffset;
     const header = document.querySelector(".header");
+    const threshold = 80; // متى يبدأ الإخفاء
+
+    function isMobile() {
+        return window.matchMedia("(max-width: 768px)").matches;
+    }
 
     window.addEventListener("scroll", () => {
-        const sc = window.pageYOffset || document.documentElement.scrollTop;
-        if (sc > lastScrollTop && sc > 80) header.classList.add("hide");
-        else header.classList.remove("hide");
-        lastScrollTop = sc <= 0 ? 0 : sc;
+        if (!isMobile()) {
+            // على الديسكتوب: الهيدر دائمًا ظاهر
+            header.classList.remove("hide");
+            return;
+        }
+
+        const currentY = window.pageYOffset;
+
+        // إذا المستخدم ينزل
+        if (currentY > lastScrollY && currentY > threshold) {
+            header.classList.add("hide");
+        }
+        // إذا المستخدم يطلع
+        else if (currentY < lastScrollY) {
+            header.classList.remove("hide");
+        }
+
+        lastScrollY = currentY;
+    });
+
+    // إذا تغيّر حجم الشاشة من جوال ↔ ديسكتوب
+    window.addEventListener("resize", () => {
+        if (!isMobile()) {
+            // نضمن أن الهيدر يظهر دائمًا في الديسكتوب
+            header.classList.remove("hide");
+        }
     });
 
     // Switch student/employment forms
@@ -193,6 +292,7 @@
 
         const student = document.getElementById('studentForm');
         const employment = document.getElementById('employmentForm');
+        const videoCarousel = document.getElementById('videoCarousel');
 
         if (student) {
             student.addEventListener("submit", function (e) {
@@ -209,6 +309,16 @@
                 employment.querySelectorAll(".field-error").forEach((n) => (n.textContent = ""));
                 if (!validateEmployment(employment)) return;
                 submitForm(employment, 'employment.php');
+            });
+        }
+
+        // Pause any playing video when sliding to another item
+        if (videoCarousel) {
+            videoCarousel.addEventListener('slide.bs.carousel', () => {
+                videoCarousel.querySelectorAll('video').forEach((vid) => {
+                    if (!vid.paused) vid.pause();
+                    vid.currentTime = 0;
+                });
             });
         }
 

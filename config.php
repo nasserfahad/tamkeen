@@ -26,14 +26,14 @@ $allowedOrigins = [
 
 
 return [
-    'smtp_host' => getenv('SMTP_HOST') ?: 'sandbox.smtp.mailtrap.io', // mail.example.sa SMTP host
-    'smtp_port' => (int) (getenv('SMTP_PORT') ?: 2525), // 559 SMTP port
-    'smtp_user' => getenv('SMTP_USER') ?: '95c8fe40f48e55',
-    'smtp_pass' => getenv('SMTP_PASS') ?: '7c3babc6a3fce9', // DO NOT COMMIT REAL PASSWORDS
+    'smtp_host' => getenv('SMTP_HOST') ?: 'ojoor.sa', // mail.example.sa SMTP host
+    'smtp_port' => (int) (getenv('SMTP_PORT') ?: 587), // 559 SMTP port
+    'smtp_user' => getenv('SMTP_USER') ?: 'rayan@ojoor.sa',
+    'smtp_pass' => getenv('SMTP_PASS') ?: 'Rr10203040!', // DO NOT COMMIT REAL PASSWORDS
     'smtp_secure' => getenv('SMTP_SECURE') ?: 'tls',
     'from_email' => getenv('FROM_EMAIL') ?: 'no-reply@tamkeen-edu.sa',
     'from_name' => getenv('FROM_NAME') ?: 'Tamkeen',
-    'admin_email' => getenv('ADMIN_EMAIL') ?: 'info@tamkeen-edu.sa',
+    'admin_email' => getenv('ADMIN_EMAIL') ?: 'rayan@ojoor.sa',
     'brand_name' => getenv('BRAND_NAME') ?: 'Tamkeen',
     'brand_color' => getenv('BRAND_COLOR') ?: '#253676',
     'brand_logo' => getenv('BRAND_LOGO') ?: 'https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png',
