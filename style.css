@@ -47,15 +47,9 @@ body {
 }
 
 .logo-image {
-<<<<<<< HEAD
   height: 90px;
   width: auto;
   max-width: 200px;
-=======
-  height: 90px; /* ارتفاع اللوجو */
-  width: auto; /* العرض تلقائي للحفاظ على النسبة */
-  max-width: 200px; /* أقصى عرض */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   cursor: pointer;
 }
 
@@ -354,30 +348,19 @@ body {
   min-width: 280px;
 }
 
-<<<<<<< HEAD
 /* The background shape */
 .hero-bg {
   width: 420px;
   height: 480px;
-=======
-.hero-bg {
-  width: 450px; /* أكبر من الصورة */
-  height: 450px;
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   background-color: #253676;
   border-radius: 220px 220px 0 0;
   position: relative;
   margin: 0 auto;
-<<<<<<< HEAD
   overflow: hidden;
-=======
-  overflow: hidden; /* لاحتواء الصورة داخل الشكل */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 }
 
 .child-image {
   position: absolute;
-<<<<<<< HEAD
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -393,15 +376,6 @@ body {
   border-top-right-radius: 190px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-=======
-  bottom: 0; /* تثبيت الصورة من الأسفل */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 360px; /* نفس حجمك بالضبط */
-  height: 360px;
-  background: url("assets/images/image_original_quality_.jpeg") center/cover
-    no-repeat;
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 }
 
 .hero-content {
@@ -500,11 +474,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-<<<<<<< HEAD
   flex-direction: row-reverse; /* Image on the right */
-=======
-  flex-direction: row-reverse; /* الصورة على اليمين */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   /* flex-wrap: wrap; */
 }
 
@@ -544,35 +514,20 @@ body {
   object-fit: cover;
 }
 
-<<<<<<< HEAD
 /* Mobile Design */
 @media (max-width: 786px) {
   .goals-content {
     flex-direction: column; /* Image above text */
-=======
-/* ✅ تصميم الجوال */
-@media (max-width: 786px) {
-  .goals-content {
-    flex-direction: column; /* الصورة فوق النص */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
     text-align: center;
   }
 
   .goals-image {
-<<<<<<< HEAD
     order: -1; /* Image appears above */
-=======
-    order: -1; /* الصورة تطلع فوق */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
     /* margin-bottom: 30px; */
   }
 
   .goals-text {
-<<<<<<< HEAD
     text-align: right; /* Text remains right-aligned */
-=======
-    text-align: right; /* النص يبقى يمين */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   }
 
   .goals-section h2 {
@@ -600,11 +555,7 @@ body {
   display: flex;
   align-items: center;
   gap: 50px;
-<<<<<<< HEAD
   direction: rtl;
-=======
-  direction: rtl; /* مهم لأن الصفحة عربية */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 }
 
 .banner-logo {
@@ -689,7 +640,6 @@ body {
 .service-card .btn {
   font-size: 16px;
   padding: 12px 25px;
-<<<<<<< HEAD
 }
 
 /* Service detail pages */
@@ -968,9 +918,6 @@ body {
   }
 }
 /* Join Us Pages */
-=======
-} /* Join Us Pages */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 
 .join-section {
   padding: 60px 0;
@@ -1029,26 +976,15 @@ body {
   line-height: 1.8;
 }
 
-<<<<<<< HEAD
 /* Terms list */
 .form-terms li {
   position: relative;
   padding-right: 28px; /* Space for the bullet */
-=======
-/* عنصر الشرط */
-.form-terms li {
-  position: relative;
-  padding-right: 28px; /* مساحة للنقطة */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   margin-bottom: 8px;
   text-align: right;
 }
 
-<<<<<<< HEAD
 /* Bullet on the right */
-=======
-/* النقطة في اليمين */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 .form-terms li::before {
   content: "•";
   position: absolute;
@@ -1271,11 +1207,6 @@ body {
 }
 
 /* Responsive Design */
-<<<<<<< HEAD
-=======
-
-/* زر الهامبرغر */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 .menu-toggle {
   display: none;
   background: transparent;
@@ -1292,11 +1223,7 @@ body {
   outline-offset: 2px;
 }
 
-<<<<<<< HEAD
 /* Phone Design */
-=======
-/* ====== موبايل ====== */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 @media (max-width: 768px) {
   .header-container {
     padding: 0 16px;
@@ -1309,17 +1236,10 @@ body {
     justify-content: center;
   }
 
-<<<<<<< HEAD
   /* Hide the default menu */
   .nav-menu {
     width: 100%;
     display: none; /* Closed by default */
-=======
-  /* نخفي المنيو الافتراضي */
-  .nav-menu {
-    width: 100%;
-    display: none; /* مغلقة افتراضياً */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
     position: absolute;
     top: 100%;
     right: 0;
@@ -1330,22 +1250,14 @@ body {
     padding: 12px 16px 16px;
   }
 
-<<<<<<< HEAD
   /* When open */
-=======
-  /* عند الفتح */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   .nav-menu.is-open {
     display: block;
   }
 
   .nav-links {
     display: flex;
-<<<<<<< HEAD
     flex-direction: column; /* Vertical list */
-=======
-    flex-direction: column; /* قائمة عمودية */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
     gap: 10px;
     align-items: stretch;
   }
@@ -1354,11 +1266,7 @@ body {
     font-size: 18px;
     padding: 12px 14px;
     border-radius: 12px;
-<<<<<<< HEAD
     background: #f3f4f6; /* List shape */
-=======
-    background: #f3f4f6; /* شكل قائمة */
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
     text-align: right;
   }
 
@@ -1377,7 +1285,6 @@ body {
   }
 
   .hero-bg {
-<<<<<<< HEAD
     width: 360px; /* Smaller than 420 */
     height: 412px; /* 480 × (360/420) */
     border-radius: 180px 180px 0 0;
@@ -1390,15 +1297,6 @@ body {
     border-top-right-radius: 170px;
 
     background-position: center 50%;
-=======
-    width: 320px;
-    height: 320px;
-  }
-
-  .child-image {
-    width: 320px;
-    height: 320px;
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   }
 
   .hero-title {
@@ -1499,7 +1397,6 @@ body {
     font-size: 18px;
   }
 
-<<<<<<< HEAD
   @media (max-width: 768px) {
     .hero-bg {
       width: clamp(260px, 70vw, 320px);
@@ -1513,12 +1410,6 @@ body {
       border-top-left-radius: 999px;
       border-top-right-radius: 999px;
     }
-=======
-  .hero-bg,
-  .child-image {
-    width: 260px;
-    height: 260px;
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
   }
 
   .services-grid {

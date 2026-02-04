@@ -293,7 +293,6 @@
         const student = document.getElementById('studentForm');
         const employment = document.getElementById('employmentForm');
         const videoCarousel = document.getElementById('videoCarousel');
-<<<<<<< HEAD
         const params = new URLSearchParams(window.location.search);
         const hash = (window.location.hash || '').replace('#', '');
         const requestedPage = hash || params.get('page');
@@ -302,8 +301,6 @@
         if (requestedPage && document.getElementById(requestedPage)) {
             showPage(requestedPage);
         }
-=======
->>>>>>> bb24d7f232c320c9c985df08d6ddb1525704f6d0
 
         if (student) {
             student.addEventListener("submit", function (e) {
