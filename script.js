@@ -152,29 +152,48 @@
     // ───────────────────────
     // Submit form
     // ───────────────────────
-    async function submitForm(form, endpoint) {
-        const btn = form.querySelector('button[type="submit"]');
+    // ───────────────────────
+// Submit form (Formspree version)
+// ───────────────────────
+async function submitForm(form, endpoint) {
+  const btn = form.querySelector('button[type="submit"]');
+  const status = form.querySelector('.form-status');
+  if (status) status.textContent = '';
 
-        const status = form.querySelector('.form-status');
-        if (status) status.textContent = '';
-        setButtonLoading(btn, true);
+  setButtonLoading(btn, true);
 
-        try {
-            const fd = new FormData(form);
-            const res = await fetch(endpoint, { method: 'POST', body: fd });
-            const json = await res.json().catch(() => ({ success: false }));
+  try {
+    const fd = new FormData(form);
 
-            if (!res.ok || !json.success) throw new Error(json.message || `فشل الإرسال`);
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: fd,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
 
-            showToast(json.message || 'تم الإرسال بنجاح.', 'success');
-            form.reset();
-        } catch (err) {
-            showToast(err.message || 'تعذر إرسال الطلب.', 'error');
-        } finally {
-            setButtonLoading(btn, false);
-        }
+    if (!res.ok) {
+      const data = await res.json().catch(() => null);
+      const msg =
+        (data && (data.error || data.message)) ||
+        'تعذر إرسال الطلب. تأكد من إعدادات Formspree.';
+      throw new Error(msg);
     }
 
+    showToast('تم إرسال الطلب بنجاح.', 'success');
+    form.reset();
+
+    // إذا كان فورم التوظيف: رجّع اسم الملف الظاهر
+    const fileNameEl = form.querySelector('.file-name');
+    if (fileNameEl) fileNameEl.textContent = 'لم يتم تحديد أي ملف';
+  } catch (err) {
+    showToast(err.message || 'تعذر إرسال الطلب.', 'error');
+  } finally {
+    setButtonLoading(btn, false);
+  }
+}
+    
     // ───────────────────────
     // Mobile Menu (NEW)
     // ───────────────────────
@@ -307,7 +326,7 @@
                 e.preventDefault();
                 student.querySelectorAll(".field-error").forEach((n) => (n.textContent = ""));
                 if (!validateStudent(student)) return;
-                submitForm(student, 'student.php');
+                submitForm(student, 'https://formspree.io/f/mzdvnqwd');
             });
         }
 
