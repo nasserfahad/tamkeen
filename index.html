@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -12,645 +12,71 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Cairo", Arial, sans-serif;
-        background-color: #f5f5f5;
-        line-height: 1.6;
-        color: #333;
-        direction: rtl;
-      } /* Header */
-
-      .header {
-        background-color: #fffefc;
-        padding: 15px 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      .header-container {
-        max-width: 1440px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 40px;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo-image {
-        height: 90px; /* ارتفاع اللوجو */
-        width: auto; /* العرض تلقائي للحفاظ على النسبة */
-        max-width: 200px; /* أقصى عرض */
-      }
-
-      .nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-      }
-
-      .nav-link {
-        padding: 12px 20px;
-        text-decoration: none;
-        color: #333;
-        font-size: 22px;
-        font-weight: 500;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .nav-link:hover {
-        background-color: #f0f0f0;
-      }
-
-      .nav-link.active {
-        color: #00a17a;
-        font-weight: 600;
-      }
-
-      .login-btn {
-        background-color: #253676;
-        color: white !important;
-        padding: 12px 24px;
-        border-radius: 18px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .login-btn:hover {
-        background-color: #1d2a5f;
-        transform: translateY(-2px);
-      } /* Main Content */
-
-      .main-content {
-        max-width: 1440px;
-        margin: 0 auto;
-        background: white;
-        min-height: calc(100vh - 140px);
-      }
-
-      .page {
-        display: none;
-        padding: 40px;
-      }
-
-      .page.active {
-        display: block;
-      } /* About Page */
-
-      .hero-section {
-        display: flex;
-        align-items: center;
-        gap: 60px;
-        margin-bottom: 60px;
-        padding: 40px 0;
-      }
-
-      .hero-image {
-        position: relative;
-        flex: 1;
-      }
-
-      .hero-bg {
-        width: 400px;
-        height: 400px;
-        background-color: #253676;
-        border-radius: 200px 200px 0 0;
-        position: relative;
-        margin: 0 auto;
-      }
-
-      .child-image {
-        position: absolute;
-        top: -10px;
-        right: 0px;
-        width: 410px;
-        height: 410px;
-        background: url("https://i.ibb.co/gM0z9RS1/3b7616aa1cffc6fffb0ef4f3bd5ecb995fc309b2.png")
-          center/cover;
-        background-size: cover;
-        background-position: center;
-      }
-
-      .hero-content {
-        flex: 1;
-        padding-right: 40px;
-      }
-
-      .hero-title {
-        font-size: 48px;
-        color: #00a17a;
-        margin-bottom: 30px;
-        line-height: 1.3;
-      }
-
-      .hero-description {
-        font-size: 24px;
-        color: #253676;
-        margin-bottom: 40px;
-        line-height: 1.8;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-      }
-
-      .btn {
-        padding: 15px 24px;
-        border: none;
-        border-radius: 25px;
-        font-size: 18px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-      }
-
-      .btn-primary {
-        background-color: #253676;
-        color: white;
-      }
-
-      .btn-secondary {
-        background-color: #eebc23;
-        color: white;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      } /* Vision & Mission Cards */
-
-      .cards-section {
-        display: flex;
-        gap: 40px;
-        margin: 60px 0;
-      }
-
-      .card {
-        flex: 1;
-        background: white;
-        border: 3px solid #004266;
-        border-radius: 20px;
-        padding: 40px;
-        text-align: right;
-      }
-
-      .card h3 {
-        font-size: 28px;
-        color: #00a17a;
-        margin-bottom: 20px;
-      }
-
-      .card p {
-        font-size: 20px;
-        line-height: 1.8;
-        color: #333;
-      } /* Goals Section */
-
-      .goals-section {
-        background-color: #253676;
-        padding: 60px 40px;
-        border-radius: 20px;
-        margin: 60px 0;
-        direction: rtl;
-      }
-
-      .goals-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 50px;
-        flex-direction: row-reverse; /* الصورة على اليمين */
-        /* flex-wrap: wrap; */
-      }
-
-      .goals-text {
-        flex: 1;
-        min-width: 300px;
-      }
-
-      .goals-section h2 {
-        color: #eebc23;
-        font-size: 36px;
-        margin-bottom: 30px;
-      }
-
-      .goals-section ul {
-        list-style-type: square;
-        color: #fff;
-        padding-right: 30px;
-        font-size: 22px;
-        line-height: 1.8;
-      }
-
-      .goals-section li {
-        color: #fff;
-        margin-bottom: 15px;
-      }
-
-      .goals-image {
-        /* flex: 0 0 320px; */
-        text-align: center;
-      }
-
-      .goals-image img {
-        width: 100%;
-        max-width: 320px;
-        border-radius: 20px;
-        object-fit: cover;
-      }
-
-      /* ✅ تصميم الجوال */
-      @media (max-width: 786px) {
-        .goals-content {
-          flex-direction: column; /* الصورة فوق النص */
-          text-align: center;
-        }
-
-        .goals-image {
-          order: -1; /* الصورة تطلع فوق */
-          /* margin-bottom: 30px; */
-        }
-
-        .goals-text {
-          text-align: right; /* النص يبقى يمين */
-        }
-
-        .goals-section h2 {
-          text-align: center;
-        }
-
-        .goals-section ul {
-          padding-right: 20px;
-          font-size: 20px;
-        }
-      }
-      /* Services Page */
-
-      .services-banner {
-        background-color: #253676;
-        padding: 50px 30px;
-        border-radius: 20px;
-        margin-bottom: 60px;
-        display: flex;
-        justify-content: center;
-        text-align: right;
-      }
-
-      .banner-content {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-        direction: rtl; /* مهم لأن الصفحة عربية */
-      }
-
-      .banner-logo {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-      }
-
-      .banner-logo img {
-        height: 120px;
-        width: auto;
-      }
-      .divider {
-        width: 3px;
-        height: 130px;
-        background-color: white;
-      }
-
-      .services-banner h2 {
-        color: white;
-        font-size: 29px;
-        margin-bottom: 20px;
-      }
-
-      @media (max-width: 768px) {
-        .banner-content {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        .banner-logo {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .divider {
-          width: 230%;
-          height: 2px;
-        }
-
-        .banner-text {
-          text-align: center;
-        }
-
-        .banner-text h2 {
-          font-size: 22px;
-        }
-
-        .banner-logo img {
-          height: 85px;
-        }
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        margin: 60px 0;
-      }
-
-      .service-card {
-        border: 3px solid #253676;
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        background: white;
-        transition: all 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      .service-card h3 {
-        font-size: 24px;
-        color: #0e0000;
-        margin-bottom: 30px;
-      }
-
-      .service-card .btn {
-        font-size: 16px;
-        padding: 12px 25px;
-      } /* Join Us Pages */
-
-      .join-section {
-        padding: 60px 0;
-        text-align: center;
-      }
-
-      .portal-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin: 40px 0 60px 0;
-      }
-
-      .portal-btn {
-        padding: 20px 100px;
-        font-size: 24px;
-        font-weight: 600;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .portal-btn.employment {
-        background-color: #253676;
-        color: white;
-      }
-
-      .portal-btn.students {
-        background-color: #00a17a;
-        color: white;
-      }
-
-      .portal-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      .form-description {
-        font-size: 20px;
-        color: #00a17a;
-        margin: 40px 0;
-        line-height: 1.8;
-      }
-
-      .form-container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .form-group {
-        margin-bottom: 30px;
-        text-align: right;
-      }
-
-      .form-group label {
-        display: block;
-        font-size: 18px;
-        color: #253676;
-        margin-bottom: 10px;
-        font-weight: 600;
-      }
-
-      .form-group input,
-      .form-group select {
-        width: 100%;
-        padding: 15px;
-        border: 3px solid #253676;
-        border-radius: 20px;
-        font-size: 16px;
-        direction: rtl;
-      }
-
-      .file-upload {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-        width: 100%;
-      }
-
-      .file-upload input[type="file"] {
-        position: absolute;
-        left: -9999px;
-      }
-
-      .file-upload-btn {
-        background-color: #f0f0f0;
-        border: 3px solid #253676;
-        border-radius: 20px;
-        padding: 15px;
-        width: 100%;
-        text-align: right;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .file-name {
-        color: #666;
-      }
-
-      .submit-btn {
-        background-color: #00a17a;
-        color: white;
-        padding: 15px 60px;
-        border: none;
-        border-radius: 20px;
-        font-size: 20px;
-        font-weight: 600;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 30px;
-        transition: all 0.3s ease;
-      }
-
-      .submit-btn:hover {
-        background-color: #008f6a;
-        transform: translateY(-2px);
-      } /* Footer */
-
-      .footer {
-        background-color: #f5f5f5;
-        padding: 40px 0;
-        text-align: center;
-        border-top: 1px solid #ddd;
-      }
-
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      .social-icons a {
-        color: #253676;
-        font-size: 24px;
-        transition: all 0.3s ease;
-      }
-
-      .social-icons a:hover {
-        color: #00a17a;
-        transform: translateY(-3px);
-      } /* Responsive Design */
-
-      @media (max-width: 768px) {
-        .header-container {
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0 10px;
-        }
-
-        .nav-links {
-          /* flex-direction: column; */
-          gap: 20px;
-        }
-        .nav-link {
-          display: block;
-          font-size: 17px;
-          color: #333;
-          padding: 10px 0;
-        }
-        /* عند التمرير للأسفل */
-        .header.hide {
-          transform: translateY(-100%);
-          transition: transform 0.4s ease;
-        }
-
-        /* عند العودة للأعلى */
-        .header {
-          transition: transform 0.4s ease;
-        }
-
-        .hero-section {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .hero-content {
-          padding-right: 0;
-        }
-
-        .hero-title {
-          font-size: 36px;
-        }
-
-        .cards-section {
-          flex-direction: column;
-        }
-
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .portal-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .page {
-          padding: 20px;
-        }
-
-        .form-container {
-          padding: 20px;
-        }
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header -->
     <header class="header">
       <div class="header-container">
         <div class="logo">
-          <img
-            src="https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png"
-            alt="تمكين لوجو"
-            class="logo-image"
-          />
+          <a
+            href="#"
+            onclick="
+              showPage('about');
+              if (window.closeMobileMenu) closeMobileMenu();
+              return false;
+            "
+          >
+            <img
+              src="https://i.ibb.co/9k9dJ9Kx/Screenshot-2025-08-20-at-21-43-10.png"
+              alt="تمكين لوجو"
+              class="logo-image"
+            />
+          </a>
         </div>
-        <nav class="nav-menu">
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-menu" id="mainNav">
           <div class="nav-links">
-            <a href="#" class="nav-link active" onclick="showPage('about')"
+            <a
+              href="#"
+              class="nav-link active"
+              onclick="
+                showPage('about');
+                closeMobileMenu();
+              "
               >من نحن</a
             >
-            <a href="#" class="nav-link" onclick="showPage('services')"
+            <a
+              href="#"
+              class="nav-link"
+              onclick="
+                showPage('services');
+                closeMobileMenu();
+              "
               >خدماتنا</a
             >
-            <a href="#" class="nav-link" onclick="showPage('join')"
-              >إنضم إلينا</a
+            <a
+              href="#"
+              class="nav-link"
+              onclick="
+                showPage('join');
+                closeMobileMenu();
+              "
+              >بوابة تسجيل المستفيدين - تسجيل جديد</a
             >
           </div>
-          <!-- <a href="#" class="login-btn">تسجيل الدخول</a> -->
         </nav>
       </div>
     </header>
@@ -659,6 +85,190 @@
     <main class="main-content">
       <!-- About Page -->
       <div id="about" class="page active">
+        <section class="video-slider">
+          <div class="slider-heading">
+            <!-- <div class="slider-label">قصص من قلب المركز</div>
+            <h2>شاهد لقطات من برامج مركز تمكين</h2> -->
+          </div>
+
+          <div
+            id="videoCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            data-bs-interval="8500"
+            dir="ltr"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                    controlsList="nodownload"
+                    disablepictureinpicture
+                  >
+                    <source src="assets/Videos/Video-1.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  controlsList="nodownload"
+                  disablepictureinpicture
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src="assets/Videos/Video-2.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  controlsList="nodownload"
+                  disablepictureinpicture
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src="assets/Videos/Video-3.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src="assets/Videos/Video-4.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src="assets/Videos/Video-5.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source src="assets/Videos/Video-6.MP4" type="video/mp4" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="الشريحة الأولى"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="1"
+                aria-label="الشريحة الثانية"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="2"
+                aria-label="الشريحة الثالثة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="3"
+                aria-label="الشريحة الرابعة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="4"
+                aria-label="الشريحة الخامسة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="5"
+                aria-label="الشريحة السادسة"
+              ></button>
+            </div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">السابق</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">التالي</span>
+            </button>
+          </div>
+        </section>
+
         <div class="hero-section">
           <div class="hero-image">
             <div class="hero-bg">
@@ -668,15 +278,22 @@
           <div class="hero-content">
             <h1 class="hero-title">نرحب بكم في مركز تمكين لذوي متلازمة داون</h1>
             <p class="hero-description">
-              المركز الأول بشمال المملكة لذوي متلازمة داون نطمح في مستقبل يعيش
-              فيه أفراد متلازمة الداون مستقلين ومنتجين ومقدرين في المجتمع
+              نحن مركز تمكين لذوي متلازمة داون، تأسس منذ عام 2017م  تم تأسيس
+              المركز من قبل الأستاذة / هديل فهد الفريح، ليكون أول مركز متخصص
+              لذوي متلازمة داون في شمال المملكة في مركز تمكين لأطفال ذوي متلازمة
+              داون بحائل نعمل على تقديم خدمات تعليمية وتأهيلية عالية الجودة ضمن
+              بيئة آمنة ومحفزة  ، يقوم عليها فريق متخصص يواكب أعلى المعايير
+              لرعاية الأطفال وتنمية قدراتهم. يقدم المركز خدماته للبنين من عمر
+              سنتين حتى 12 سنة وللبنات من عمر سنتين حتى 45 سنة معتمداً على واحدة
+              من أفضل منهجيات التعليم والتأهيل المتخصصة لمتلازمة داون في المملكة
+              العربية السعودية
             </p>
             <div class="hero-buttons">
               <a href="#" class="btn btn-primary" onclick="showPage('services')"
                 >خدماتنا</a
               >
               <a href="#" class="btn btn-secondary" onclick="showPage('join')"
-                >إنضم إلينا</a
+                >بوابة تسجيل المستفيدين - تسجيل جديد</a
               >
             </div>
           </div>
@@ -770,13 +387,13 @@
             <!-- الجزء الأيسر: النص والزر -->
             <div class="banner-text">
               <h2>أحدث برامج مركز تمكين لذوي متلازمة داون</h2>
-              <a
+              <!-- <a
                 href="#"
                 class="btn btn-secondary"
                 onclick="showPage('services')"
               >
                 إقرأ المزيد
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -784,39 +401,51 @@
         <div class="services-grid">
           <div class="service-card">
             <h3>التعليم الأكاديمي</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/academic-education.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>برامج اجتماعية</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/social-programs.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>تعديل السلوك</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/behavior-therapy.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>العلاج الطبيعي</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/physical-therapy.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>علاج النطق والتخاطب</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/speech-therapy.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>العلاج الوظيفي</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/occupational-therapy.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
-            <h3>رحلات ترفيهية</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
-          </div>
-          <div class="service-card">
-            <h3>التأهيل النفسي</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <h3>الإنجازات والفعاليات</h3>
+            <a href="services/achievements-events.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
           <div class="service-card">
             <h3>تأهيل مهني</h3>
-            <a href="#" class="btn btn-primary">تعرف أكثر</a>
+            <a href="services/vocational-training.html" class="btn btn-primary"
+              >تعرف أكثر</a
+            >
           </div>
         </div>
       </div>
@@ -839,6 +468,15 @@
           <!-- Student Enrollment Form -->
           <div id="student-form" class="form-container">
             <!-- <p class="form-description">ساهم في بناء مستقبل واعد لأطفال تمكين، وكن جزءاً من مسيرتنا واستكشف الفرص الوظيفية المتاحة عبر موقعنا</p> -->
+            <p class="form-description">شروط التسجيل</p>
+            <ul class="form-terms">
+              <li>ان يكون سعودي الجنسية.</li>
+              <li>
+                ان يكون لديه حساب مسجل لدى وزارة الموارد البشرية والتنمية
+                الاجتماعية.
+              </li>
+              <li>ان يكون نوع الإعاقة (متلازمة داون – إعاقة فكرية).</li>
+            </ul>
 
             <form id="studentForm" action="student.php" method="POST">
               <div class="form-group">
@@ -936,6 +574,8 @@
       </div>
     </main>
 
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="social-icons">
@@ -962,6 +602,11 @@
         </a>
       </div>
     </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
 
     <script src="script.js" defer></script>
 
