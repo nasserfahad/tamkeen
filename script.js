@@ -375,5 +375,40 @@
         });
       });
     }
+
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = lightbox ? lightbox.querySelector('.image-lightbox__img') : null;
+    const closeBtn = lightbox ? lightbox.querySelector('.lightbox__close') : null;
+
+    function openLightbox(src, alt) {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('show');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightboxImg) return;
+      lightbox.classList.remove('show');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.classList.remove('no-scroll');
+    }
+
+    if (closeBtn && lightbox) {
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
+      });
+    }
+
+    document.querySelectorAll('.service-media-card img').forEach((img) => {
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
   });
 })();

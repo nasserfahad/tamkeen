@@ -73,38 +73,23 @@
           <h2>لقطات متنوعة</h2>
           <div class="service-media-grid">
             <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <!-- <source src="../assets/activity_videos/الختامي لمركز تمكين 2019.mp4" type="video/mp4" /> -->
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
+              <img src="../assets/academic_education/1.jpg" alt="صور" />
               <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
-              </div>
-            </div>
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <!-- <source src="../assets/activity_videos/الختامي لمركز تمكين 2019.mp4" type="video/mp4" /> -->
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
+                <span class="media-tag">صورة </span>
+                <h3>عنوان الصورة...</h3>
               </div>
             </div>
 
             <div class="service-media-card">
-              <img src="" alt="صور" />
+              <img src="../assets/academic_education/2.jpg" alt="صور" />
+              <div class="media-body">
+                <span class="media-tag">صورة </span>
+                <h3>عنوان الصورة...</h3>
+              </div>
+            </div>
+
+            <div class="service-media-card">
+              <img src="../assets/academic_education/3.jpg" alt="صور" />
               <div class="media-body">
                 <span class="media-tag">صورة </span>
                 <h3>عنوان الصورة...</h3>
@@ -118,6 +103,19 @@
         >
       </div>
     </main>
+
+    <div
+      class="image-lightbox"
+      id="imageLightbox"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="معاينة الصورة"
+    >
+      <button class="lightbox__close" type="button" aria-label="إغلاق الصورة">
+        &times;
+      </button>
+      <img class="image-lightbox__img" src="" alt="" />
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
