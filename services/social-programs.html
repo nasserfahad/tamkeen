@@ -69,122 +69,200 @@
           </div>
         </section>
 
-        <!-- قابل للتعديل ستايل مختلف -->
-        <section class="service-section">
-          <h2>لقطات متنوعة</h2>
-          <div class="service-media-grid">
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/6.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
+        <section class="video-slider">
+          <div
+            id="videoCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            data-bs-interval="8500"
+            dir="ltr"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                    controlsList="nodownload"
+                    disablepictureinpicture
+                  >
+                    <source
+                      src="../assets/social_programs/1.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
               </div>
-            </div>
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/5.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
+
+              <div class="carousel-item">
+                <div
+                  controlsList="nodownload"
+                  disablepictureinpicture
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source
+                      src="../assets/social_programs/2.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  controlsList="nodownload"
+                  disablepictureinpicture
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source
+                      src="../assets/social_programs/3.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source
+                      src="../assets/social_programs/4.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source
+                      src="../assets/social_programs/5.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div
+                  class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden"
+                >
+                  <video
+                    class="w-100 h-100"
+                    controls
+                    preload="metadata"
+                    playsinline
+                  >
+                    <source
+                      src="../assets/social_programs/6.MP4"
+                      type="video/mp4"
+                    />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                  </video>
+                </div>
               </div>
             </div>
 
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/4.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
-              </div>
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="الشريحة الأولى"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="1"
+                aria-label="الشريحة الثانية"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="2"
+                aria-label="الشريحة الثالثة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="3"
+                aria-label="الشريحة الرابعة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="4"
+                aria-label="الشريحة الخامسة"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#videoCarousel"
+                data-bs-slide-to="5"
+                aria-label="الشريحة السادسة"
+              ></button>
             </div>
 
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/3.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
-              </div>
-            </div>
-
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/2.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
-              </div>
-            </div>
-
-            <div class="service-media-card">
-              <video
-                controls
-                preload="metadata"
-                controlsList="nodownload"
-                disablepictureinpicture
-              >
-                <source
-                  src="../assets/social_programs/1.mp4"
-                  type="video/mp4"
-                />
-                متصفحك لا يدعم تشغيل الفيديو.
-              </video>
-              <div class="media-body">
-                <span class="media-tag">فيديو </span>
-                <h3>عنوان للفيديو...</h3>
-              </div>
-            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">السابق</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">التالي</span>
+            </button>
           </div>
         </section>
 

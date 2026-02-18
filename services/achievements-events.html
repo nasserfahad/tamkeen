@@ -64,14 +64,49 @@
               الْمُجْتَمَعِيَّ وَيُحَقِّقُ رِسَالَةَ الْمَرْكَزِ فِي التَّمْكِينِ الشَّامِلِ وَالْمُسْتَد
             </p>
           </div>
-          <div class="service-hero__media">
-            <div class="service-hero__frame">
-              <!-- <img src=" Here the URL " alt="" /> -->
-            </div>
+        </section>
+
+        <section class="video-slider">
+
+          <div
+            id="videoCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            data-bs-interval="8500"
+            dir="ltr"
+          >
+            <div class="carousel-inner"></div>
+
+            <div class="carousel-indicators"></div>
+
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">السابق</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#videoCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">التالي</span>
+            </button>
           </div>
         </section>
 
-        <section class="service-section">
+        <!-- <section class="service-section">
           <h2>لقطات متنوعة</h2>
           <div class="service-media-grid">
             <div class="service-media-card">
@@ -256,7 +291,7 @@
             </div>
             </div>            
           </div>
-        </section>
+        </section> -->
 
         <a class="service-back" href="../index.html#services"
           ><i class="fas fa-arrow-right"></i> الرجوع إلى صفحة الخدمات</a
@@ -269,5 +304,44 @@
       defer
     ></script>
     <script src="../script.js" defer></script>
+    <script>
+      (function () {
+        const videoCarousel = document.querySelector('#videoCarousel');
+        const carouselInner = videoCarousel?.querySelector('.carousel-inner');
+        const carouselIndicators = videoCarousel?.querySelector('.carousel-indicators');
+
+        // Single source of truth for all 21 videos: first 6 in /assets/videos, remaining 15 in /assets/activity_videos
+        const primaryVideos = Array.from({ length: 6 }, (_, i) => `../assets/videos/video-${i + 1}.MP4`);
+        const extraVideos = Array.from({ length: 15 }, (_, i) => `../assets/activity_videos/${i + 1}.mp4`);
+        const videoSources = [...primaryVideos, ...extraVideos];
+
+        if (!videoCarousel || !carouselInner || !carouselIndicators) return;
+
+        videoSources.forEach((src, index) => {
+          const item = document.createElement('div');
+          item.className = `carousel-item${index === 0 ? ' active' : ''}`;
+          item.innerHTML = `
+            <div class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden">
+              <video class="w-100 h-100" controls preload="metadata" playsinline controlsList="nodownload" disablepictureinpicture>
+                <source src="${src}" type="video/mp4" />
+                متصفحك لا يدعم تشغيل الفيديو.
+              </video>
+            </div>
+          `;
+          carouselInner.appendChild(item);
+
+          const indicator = document.createElement('button');
+          indicator.type = 'button';
+          indicator.dataset.bsTarget = '#videoCarousel';
+          indicator.dataset.bsSlideTo = String(index);
+          indicator.setAttribute('aria-label', `الشريحة ${index + 1}`);
+          if (index === 0) {
+            indicator.classList.add('active');
+            indicator.setAttribute('aria-current', 'true');
+          }
+          carouselIndicators.appendChild(indicator);
+        });
+      })();
+    </script>
   </body>
 </html>
