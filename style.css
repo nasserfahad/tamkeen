@@ -670,7 +670,7 @@ body {
   background: linear-gradient(115deg, #253676 0%, #00a17a 90%);
 }
 
-.service-hero--social {
+/* .service-hero--social {
   background: linear-gradient(120deg, #0f1738 0%, #eebc23 95%);
 }
 
@@ -696,7 +696,7 @@ body {
 
 .service-hero--vocational {
   background: linear-gradient(115deg, #00a17a 0%, #0f4c75 90%);
-}
+} */
 
 /* .service-pill {
   display: inline-block;

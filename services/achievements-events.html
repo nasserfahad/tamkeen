@@ -52,22 +52,26 @@
 
     <main class="main-content service-detail-page">
       <div id="service-detail" class="page active">
-        <section class="service-hero service-hero--achievements">
+        <section class="service-hero service-hero--academic">
           <div class="service-hero__text">
             <h1 class="service-hero__title">الأنجازات و الفعاليات</h1>
             <p class="service-hero__desc">
-              يقدم المركز خدمَةَ تَنْظِيمِ وَإِدَارَةِ الإِنْجَازَاتِ وَالْفَعَالِيَّاتِ الْهَادِفَةِ،
-              الَّتِي تُسْهِمُ فِي إِبْرَازِ قُدُرَاتِ الْمُسْتَفِيدِينَ وَتَعْزِيزِ مُشَارَكَتِهِمُ الْفَ فِي الْمُجْتَمَعِ،
-              مِنْ خِلَالِ تَنْفِيذِ فَعَالِيَّاتٍ تَعْلِيمِيَّةٍ، تَدْرِيبِيَّةٍ، اجْتِمَاعِيَّةٍ، وَتَرْفِيهِيَّةٍ تُنَمِّي الْمَهَارَاتِ،
-              وَتَرْفَعُ مُسْتَوَى الثِّقَةِ بِالنَّفْسِ، وَتَدْعَمُ الِاسْتِقْلَالِيَّةَ، ضِمْنَ بِيئَةٍ آمِنَةٍ وَمُحَفِّزَةٍ.
-              كَمَا يَعْمَلُ الْمَرْكَزُ عَلَى تَوْثِيقِ الإِنْجَازَاتِ وَإِبْرَازِهَا مُجْتَمَعِيًّا، بِمَا يُعَزِّزُ الْوَعْيَ وَالدَّمْجَ
-              الْمُجْتَمَعِيَّ وَيُحَقِّقُ رِسَالَةَ الْمَرْكَزِ فِي التَّمْكِينِ الشَّامِلِ وَالْمُسْتَد
+              يقدم المركز خدمَةَ تَنْظِيمِ وَإِدَارَةِ الإِنْجَازَاتِ
+              وَالْفَعَالِيَّاتِ الْهَادِفَةِ، الَّتِي تُسْهِمُ فِي إِبْرَازِ
+              قُدُرَاتِ الْمُسْتَفِيدِينَ وَتَعْزِيزِ مُشَارَكَتِهِمُ الْفَ فِي
+              الْمُجْتَمَعِ، مِنْ خِلَالِ تَنْفِيذِ فَعَالِيَّاتٍ
+              تَعْلِيمِيَّةٍ، تَدْرِيبِيَّةٍ، اجْتِمَاعِيَّةٍ، وَتَرْفِيهِيَّةٍ
+              تُنَمِّي الْمَهَارَاتِ، وَتَرْفَعُ مُسْتَوَى الثِّقَةِ
+              بِالنَّفْسِ، وَتَدْعَمُ الِاسْتِقْلَالِيَّةَ، ضِمْنَ بِيئَةٍ
+              آمِنَةٍ وَمُحَفِّزَةٍ. كَمَا يَعْمَلُ الْمَرْكَزُ عَلَى تَوْثِيقِ
+              الإِنْجَازَاتِ وَإِبْرَازِهَا مُجْتَمَعِيًّا، بِمَا يُعَزِّزُ
+              الْوَعْيَ وَالدَّمْجَ الْمُجْتَمَعِيَّ وَيُحَقِّقُ رِسَالَةَ
+              الْمَرْكَزِ فِي التَّمْكِينِ الشَّامِلِ وَالْمُسْتَد
             </p>
           </div>
         </section>
 
         <section class="video-slider">
-
           <div
             id="videoCarousel"
             class="carousel slide"
@@ -306,20 +310,28 @@
     <script src="../script.js" defer></script>
     <script>
       (function () {
-        const videoCarousel = document.querySelector('#videoCarousel');
-        const carouselInner = videoCarousel?.querySelector('.carousel-inner');
-        const carouselIndicators = videoCarousel?.querySelector('.carousel-indicators');
+        const videoCarousel = document.querySelector("#videoCarousel");
+        const carouselInner = videoCarousel?.querySelector(".carousel-inner");
+        const carouselIndicators = videoCarousel?.querySelector(
+          ".carousel-indicators",
+        );
 
         // Single source of truth for all 21 videos: first 6 in /assets/videos, remaining 15 in /assets/activity_videos
-        const primaryVideos = Array.from({ length: 6 }, (_, i) => `../assets/videos/video-${i + 1}.MP4`);
-        const extraVideos = Array.from({ length: 15 }, (_, i) => `../assets/activity_videos/${i + 1}.mp4`);
+        const primaryVideos = Array.from(
+          { length: 6 },
+          (_, i) => `../assets/videos/video-${i + 1}.MP4`,
+        );
+        const extraVideos = Array.from(
+          { length: 19 },
+          (_, i) => `../assets/activity_videos/${i + 1}.mp4`,
+        );
         const videoSources = [...primaryVideos, ...extraVideos];
 
         if (!videoCarousel || !carouselInner || !carouselIndicators) return;
 
         videoSources.forEach((src, index) => {
-          const item = document.createElement('div');
-          item.className = `carousel-item${index === 0 ? ' active' : ''}`;
+          const item = document.createElement("div");
+          item.className = `carousel-item${index === 0 ? " active" : ""}`;
           item.innerHTML = `
             <div class="ratio ratio-16x9 video-frame rounded-4 overflow-hidden">
               <video class="w-100 h-100" controls preload="metadata" playsinline controlsList="nodownload" disablepictureinpicture>
@@ -330,14 +342,14 @@
           `;
           carouselInner.appendChild(item);
 
-          const indicator = document.createElement('button');
-          indicator.type = 'button';
-          indicator.dataset.bsTarget = '#videoCarousel';
+          const indicator = document.createElement("button");
+          indicator.type = "button";
+          indicator.dataset.bsTarget = "#videoCarousel";
           indicator.dataset.bsSlideTo = String(index);
-          indicator.setAttribute('aria-label', `الشريحة ${index + 1}`);
+          indicator.setAttribute("aria-label", `الشريحة ${index + 1}`);
           if (index === 0) {
-            indicator.classList.add('active');
-            indicator.setAttribute('aria-current', 'true');
+            indicator.classList.add("active");
+            indicator.setAttribute("aria-current", "true");
           }
           carouselIndicators.appendChild(indicator);
         });
