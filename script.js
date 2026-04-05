@@ -1,3 +1,23 @@
+// # script.js — Main JavaScript for Tamken website
+// # cahange the form action from https://formspree.io/f/mzdvnqwd to student.php / employment.php.
+// # This script handles:
+// # - Form validation for student and employment forms
+// # - AJAX submission to our PHP endpoints
+// # - Mobile menu toggle and responsive header behavior
+// # - Image lightbox functionality
+
+// Note: This script assumes you have the appropriate HTML structure and CSS classes as outlined in the README and HTML files.
+
+// # Security and Performance Notes:
+// 1. Always validate and sanitize inputs on the server side (see student.php and employment.php).
+// 2. Use HTTPS in production to secure form submissions.
+// 3. Consider adding CAPTCHA or rate limiting if you experience spam submissions.
+// 4. For better performance, you can minify this script and serve it with proper caching headers.
+
+// wish you luck programmer :)
+
+
+
 'use strict';
 
 (function () {
@@ -351,7 +371,7 @@
         if (!validateStudent(student)) return;
 
         // ✅ Formspree (طلاب)
-        submitForm(student, 'https://formspree.io/f/mzdvnqwd');
+        submitForm(student, 'student.php');
       });
     }
 
@@ -362,7 +382,7 @@
         if (!validateEmployment(employment)) return;
 
         // ✅ Formspree (توظيف)
-        submitForm(employment, 'https://formspree.io/f/xbdknebp');
+        submitForm(employment, 'employment.php');
       });
     }
 

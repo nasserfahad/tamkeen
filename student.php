@@ -1,6 +1,13 @@
 <?php
-// student.php — Student form handler (father_name, relationship, phone_number, type_disability, email, nationality)
-// Requirements: PHPMailer via Composer. See README section below.
+// # student.php — Student form handler (father_name, relationship, phone_number, type_disability, email, nationality)
+// # Requirements: PHPMailer via Composer. See README section below.
+// # SECURITY NOTES:
+// # 1. Place config.php and uploads/ outside web root.
+// # 2. Validate and sanitize all inputs; never trust file uploads.
+// # 3. Use strict MIME type checks for uploads.
+
+// # cahange the form action from https://formspree.io/f/mzdvnqwd to student.php / employment.php.
+
 
 declare(strict_types=1);
 
@@ -10,7 +17,7 @@ use PHPMailer\PHPMailer\Exception;
 // ---------- Basic headers and CORS (adjust origin for production) ----------
 header('Content-Type: application/json; charset=UTF-8');
 // Load central config
-$configFile = __DIR__ . '/config.php';
+$configFile = $_SERVER['DOCUMENT_ROOT'] . '/../config.php';
 if (!is_file($configFile)) {
     respond(['success' => false, 'message' => 'الملف config.php غير موجود.'], 500);
 }

@@ -1,6 +1,12 @@
 <?php
-// employment.php — Employment form handler (full_name, email, cv_file)
-// Requirements: PHPMailer via Composer.
+// # employment.php — Employment form handler (full_name, email, cv_file)
+// # Requirements: PHPMailer via Composer.
+// # SECURITY NOTES:
+// # 1. Place config.php and uploads/ outside web root.
+// # 2. Validate and sanitize all inputs; never trust file uploads.
+// # 3. Use strict MIME type checks for uploads.
+
+// # cahange the form action from https://formspree.io/f/mzdvnqwd to student.php / employment.php.
 
 declare(strict_types=1);
 
@@ -9,7 +15,7 @@ use PHPMailer\PHPMailer\Exception;
 
 header('Content-Type: application/json; charset=UTF-8');
 // Load central config
-$configFile = __DIR__ . '/config.php';
+$configFile = $_SERVER['DOCUMENT_ROOT'] . '/../config.php'; // Place config.php outside web root for security
 if (!is_file($configFile)) {
     respond(['success' => false, 'message' => 'الملف config.php غير موجود.'], 500);
 }
@@ -98,7 +104,7 @@ if ($realMime !== $allowed[$ext]) {
 }
 
 // Store safely in uploads/
-$uploadDir = __DIR__ . '/uploads/';
+$uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/../uploads/'; // Place outside web root for security
 if (!is_dir($uploadDir) && !@mkdir($uploadDir, 0775, true)) {
     respond(['success' => false, 'message' => 'تعذر إنشاء مجلد الرفع.'], 500);
 }
@@ -106,7 +112,7 @@ if (!is_writable($uploadDir)) {
     respond(['success' => false, 'message' => 'مجلد الرفع غير قابل للكتابة.'], 500);
 }
 $base = preg_replace('/[^A-Za-z0-9._-]/u', '_', basename((string) $file['name']));
-$storedName = time() . '_' . $base;
+$storedName = time() . '_' . bin2hex(random_bytes(8)) . '_' . $base;  // Prevent collisions and sanitize name
 $destPath = $uploadDir . $storedName;
 if (!move_uploaded_file($file['tmp_name'], $destPath)) {
     respond(['success' => false, 'message' => 'تعذر حفظ الملف المرفوع.'], 500);
